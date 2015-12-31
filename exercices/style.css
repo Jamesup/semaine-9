@@ -1,0 +1,15 @@
+.selected{
+    color:blue;
+}
+
+.supprimer{
+    display: none;
+}
+
+body{
+    float:center;
+}
+
+li{
+    color:grey;
+}

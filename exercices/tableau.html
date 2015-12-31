@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Annuaire</title>
+    
+    <link href="bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <script type="text/javascript" ></script>
+
+  </head>    
+  
+  <body>
+        <input id="texte">
+        <button id="ajouter">Ajouter</button>
+        <button id="supprimer">Supprimer</button>
+        <ul id="liste"></ul>
+      
+    <script language="javascript">
+    
+$liste = document.getElementById("liste");
+$texte = document.getElementById("texte");
+$ajouter = document.getElementById("ajouter");
+$supprimer = document.getElementById("supprimer");
+
+tableau = ["James", "Nathalie", "Esther"];
+
+function afficherListe() {
+    elements = "";
+    for (i = 0; i < tableau.length; i++) {
+        elements += "<li>" + tableau[i] + "</li>";
+    }
+    $liste.innerHTML = elements;
+}
+
+function ajouter() {
+    tableau.push($texte.value);
+    afficherListe();
+}
+
+$ajouter.onclick = ajouter;
+afficherListe();
+
+function supprimer() {
+    
+tableau.pop($texte.value);
+   
+    afficherListe();
+}
+
+$supprimer.onclick = supprimer;
+afficherListe();
+        
+    </script>
+      
+        
+
+    </body>
+    </html>

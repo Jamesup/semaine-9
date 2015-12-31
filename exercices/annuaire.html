@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Annuaire</title>
+    
+    <link href="bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <script type="text/javascript" ></script>
+
+  </head>    
+  
+  <body>
+       <span><input id="prenom" placeholder="Prénom "> <input id="nom" placeholder="Nom "> <input id="numero" placeholder="Numéro "><button id="ajouter">Ajouter</button><button id="supprimer">Supprimer</button><button id="restaurer">Restaurer</button></span>
+      <ul id="liste"></ul>
+      <span><input id="recherche" placeholder="Rechercher un contact "><button id="rechercher">Rechercher</button></span>
+     
+      <ul id="resultat"></ul>
+        
+      <script language="javascript">
+          
+$liste = document.getElementById("liste");
+$prenom = document.getElementById("prenom");
+$nom = document.getElementById("nom");
+$numero = document.getElementById("numero");
+$ajouter = document.getElementById("ajouter");
+$recherche = document.getElementById("recherche");
+$rechercher = document.getElementById("rechercher");
+$resultat = document.getElementById("resultat");
+$supprimer = document.getElementById("supprimer");
+$restaurer = document.getElementById("restaurer");
+     
+      
+contacts = [{
+  prenom: "James",
+  nom: "TAILLEFER",
+  numero: "0060060606"
+}, {
+  prenom: "Nathalie",
+  nom: "TAILLEFER",
+  numero: "0505050505"
+}, {
+  prenom: "Esther",
+  nom: "TAILLEFER",
+  numero: "0905486425"
+}];
+function texteContact(contact) {
+    return contact.prenom + " " + contact.nom + " (" + contact.numero + ")";
+}
+
+
+alert(texteContact(contacts[0]));
+
+function afficherListe() {
+    elements = "";
+    for (i = 0; i < contacts.length; i++) {
+        elements += "<li>"+ texteContact(contacts[i]) + "</li>";
+    }
+    $liste.innerHTML = elements;
+}
+
+
+
+function ajouter() {
+    contacts.push({
+        prenom: $prenom.value,
+        nom: $nom.value,
+        numero: $numero.value
+    });
+    afficherListe();
+}
+
+$ajouter.onclick = ajouter;
+afficherListe();
+
+function rechercher() {
+    recherche = $recherche.value;
+    elements = "";
+    for (i = 0; i < contacts.length; i++) {
+        if (contacts[i].prenom == recherche || contacts[i].nom == recherche || contacts[i].numero == recherche) {
+            elements += "<li>" + texteContact(contacts[i]) + "</li>";
+        }
+    }
+    $resultat.innerHTML = elements;
+}
+
+$rechercher.onclick = rechercher;
+afficherListe();
+
+
+
+
+      
+    </script>
+
+    </body>
+    </html>
